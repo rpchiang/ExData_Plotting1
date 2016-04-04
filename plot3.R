@@ -3,6 +3,7 @@
 #
 
 working_directory <- "G:/R Programming/Data Science 4 - Exploratary Data Analysis/Week 1/"
+setwd(working_directory)
 
 power_data <- read.csv(paste(working_directory, "household_power_consumption.txt", sep=""), 
                        sep=";", 
@@ -14,6 +15,9 @@ gap <- subset(power_data,
 
 sampleTime <-strptime(paste(gap$Date, gap$Time), 
                       format="%d/%m/%Y %H:%M:%S")
+
+# start plotting
+png(filename = "plot3.png", units = "px", height = 480, width = 480)
 
 plot(sampleTime, 
      as.numeric(gap$Sub_metering_1), 
@@ -43,3 +47,5 @@ legend("topright",
        lty = 1, 
        col=c("black", "red", "blue"), 
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+dev.off()

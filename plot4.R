@@ -3,6 +3,7 @@
 #
 
 working_directory <- "G:/R Programming/Data Science 4 - Exploratary Data Analysis/Week 1/"
+setwd(working_directory)
 
 power_data <- read.csv(paste(working_directory, "household_power_consumption.txt", sep=""), 
                        sep=";", 
@@ -14,6 +15,9 @@ gap <- subset(power_data,
 
 sampleTime <-strptime(paste(gap$Date, gap$Time), 
                       format="%d/%m/%Y %H:%M:%S")
+
+# start plotting
+png(filename = "plot4.png", units = "px", height = 480, width = 480)
 
 par(mfcol = c(2,2))
 # 1st subplot
@@ -66,3 +70,5 @@ plot(sampleTime,
      xlab="datetime", 
      ylab = "Global_reactive_power",
      type="l")
+
+dev.off()
